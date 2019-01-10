@@ -7,15 +7,21 @@ const userModel = require('./models/userModel')
 const DB = require('./DBConnect')
 
 const app = express();
-const port = process.env.PORT || 1234;
+const port = 1234;
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 
-app.get('/', (req, res) => {
-    res.send('workin')
+app.get('/info', (req, res) => {
+    const customers = [
+        { id: 1, name: 'abu' },
+        { id: 2, name: 'john' },
+        { id: 3, name: 'ali' },
+    ]
+    res.json(customers)
+
 })
 app.post('/', (req, res) => {
     var data = new userModel()
